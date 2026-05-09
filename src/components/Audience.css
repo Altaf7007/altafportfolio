@@ -1,0 +1,58 @@
+.audience-section {
+  position: relative;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.audience-card {
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.4s ease;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+}
+
+.audience-card:hover {
+  transform: translateY(-10px);
+}
+
+.audience-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-gold);
+  margin-bottom: 2rem;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.1);
+}
+
+.audience-card:hover .audience-icon {
+  background: var(--accent-gold);
+  color: #000;
+  transform: rotateY(180deg);
+}
+
+.audience-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.audience-description {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .audience-grid {
+    grid-template-columns: 1fr;
+  }
+}

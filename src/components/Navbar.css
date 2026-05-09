@@ -1,0 +1,75 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 1.5rem 0;
+}
+
+.navbar.scrolled {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a:not(.btn) {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.nav-links a:not(.btn):hover {
+  color: var(--accent-blue);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: all 0.4s ease;
+  }
+  
+  .nav-links.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-bottom: 1px solid var(--card-border);
+  }
+}
