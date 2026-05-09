@@ -27,7 +27,8 @@ const CreatePost = () => {
     setError(null);
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/posts', formData);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      await axios.post(`${apiUrl}/api/posts`, formData);
       setLoading(false);
       navigate('/blog'); // Redirect back to blog page
     } catch (err) {

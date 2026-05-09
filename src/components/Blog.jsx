@@ -12,7 +12,8 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/posts');
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const response = await axios.get(`${apiUrl}/api/posts`);
       setPosts(response.data);
       setLoading(false);
     } catch (err) {
@@ -30,7 +31,8 @@ const Blog = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/posts/${id}`);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+        await axios.delete(`${apiUrl}/api/posts/${id}`);
         // Refresh posts after deletion
         fetchPosts();
       } catch (err) {

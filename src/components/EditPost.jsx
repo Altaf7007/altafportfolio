@@ -19,7 +19,8 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/posts/${id}`);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+        const response = await axios.get(`${apiUrl}/api/posts/${id}`);
         setFormData({
           title: response.data.title,
           content: response.data.content,
@@ -49,7 +50,8 @@ const EditPost = () => {
     setError(null);
 
     try {
-      await axios.put(`http://127.0.0.1:8000/api/posts/${id}`, formData);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      await axios.put(`${apiUrl}/api/posts/${id}`, formData);
       setSaving(false);
       navigate('/blog');
     } catch (err) {
